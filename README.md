@@ -7,7 +7,7 @@ OUC二手物品交易平台，采用安卓APP形式。
 ## 2. 使用的工具
 - IDEA Community Edition 2019.2.3;
 - JDK 1.8;
-- Android SDK API 29;
+- Android SDK 10.0;
 
 ## 3. 小组成员及分工
 - 秦浩
