@@ -1,0 +1,17 @@
+<resources>
+    <!--主页面-->
+    <string name="app_name">海鱼</string>
+    <string name="title_search">搜索</string>
+    <string name="title_publish">发布</string>
+    <string name="title_my">我的</string>
+    <!--登录页面-->
+    <string name="title_activity_login">登录</string>
+    <string name="prompt_email">学号</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="welcome">"感谢使用!"</string>
+    <string name="invalid_username">您输入的学号有误！</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"登录失败！"</string>
+</resources>
