@@ -29,7 +29,7 @@
 
 ## 软件架构分析草图：
 
-![](C:\Users\Vine\Desktop\架构分析草图.jpg)
+![image](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E8%8D%89%E5%9B%BE.jpg)
 
 
 
