@@ -23,7 +23,7 @@
 
 ## 开会照片：
 
-![](C:\Users\Vine\Desktop\开会记录.jpg)
+![](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E7%AC%AC%E5%85%AD%E5%91%A8%E4%BE%8B%E4%BC%9A.jpg)
 
 
 
