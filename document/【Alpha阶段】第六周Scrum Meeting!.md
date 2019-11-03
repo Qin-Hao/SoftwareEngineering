@@ -55,7 +55,7 @@
 
 ## 燃尽图：
 
-
+![image](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E7%AC%AC%E5%85%AD%E5%91%A8%E7%87%83%E5%B0%BD%E5%9B%BE.PNG)
 
 ## 代码或文档迁入：
 ![image](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E6%96%87%E6%A1%A3.png)
