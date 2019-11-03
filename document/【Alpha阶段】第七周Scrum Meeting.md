@@ -42,4 +42,4 @@
 大家都很积极，遇到问题会一起讨论非常和谐。虽然进度慢了但是也差不多慢慢赶上来了！
 
 ## 燃尽图：
-![image](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E7%87%83%E5%B0%BD%E5%9B%BE.png)
+![image](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E7%AC%AC%E4%B8%83%E5%91%A8%E7%87%83%E5%B0%BD%E5%9B%BE.PNG)
