@@ -22,7 +22,7 @@
 
 ## 代码或文档迁入：
 
-![文档迁入](C:\Users\Vine\Desktop\文档迁入.png)
+![文档迁入](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E6%96%87%E6%A1%A3%E8%BF%81%E5%85%A5.png
 
 
 
