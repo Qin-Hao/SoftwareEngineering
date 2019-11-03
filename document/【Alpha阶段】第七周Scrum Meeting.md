@@ -16,7 +16,7 @@
 
 ## 开会照片
 
-![](C:\Users\Vine\Desktop\第七周例会.jpg)
+![image](https://github.com/Qin-Hao/SoftwareEngineering/blob/master/document/images/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E7%AC%AC%E4%B8%83%E5%91%A8%E4%BE%8B%E4%BC%9A.jpg)
 
 
 
