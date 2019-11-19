@@ -1,17 +1,8 @@
 package ouc.cs.oceanfish.ui.login;
 
 import android.app.Activity;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -23,14 +14,28 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import ouc.cs.oceanfish.MainActivity;
 import ouc.cs.oceanfish.R;
-import ouc.cs.oceanfish.ui.login.LoginViewModel;
-import ouc.cs.oceanfish.ui.login.LoginViewModelFactory;
+import ouc.cs.oceanfish.util.DbUtil;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+
+    final EditText usernameEditText = findViewById(R.id.username);
+    final EditText passwordEditText = findViewById(R.id.password);
+
+    final Button loginButton = findViewById(R.id.login);
+    final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
+    private String username;
+    private String password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,11 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
-
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -132,5 +132,27 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 点击事件,在activity_login.xml中有设置android:onclick="connectSql"点击事件
+     */
+    public void connectSql(View view) {
+        username = usernameEditText.getText().toString();
+        password = passwordEditText.getText().toString();
+        MyThread myThread = new MyThread();
+        new Thread(myThread).start();
+    }
+
+    /**
+     * 1.使用实现 Runnable接 口的方式来定义一个线程
+     */
+    class MyThread implements Runnable{
+        @Override
+        public void run() {
+            DbUtil dbUtils = new DbUtil();
+            //dbUtils.insertStudent(username,password);
+
+        }
     }
 }
