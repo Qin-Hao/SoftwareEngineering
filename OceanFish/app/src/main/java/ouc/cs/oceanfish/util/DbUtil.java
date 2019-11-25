@@ -17,7 +17,7 @@ public class DbUtil {
     private static String user = "local";
     private static String password = "123456";
 
-    private static Connection getConnection() {
+    public static Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName(driver);
