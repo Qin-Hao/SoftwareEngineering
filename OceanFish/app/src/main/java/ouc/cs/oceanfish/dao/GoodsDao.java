@@ -110,7 +110,25 @@ public class GoodsDao {
 
     //通过id搜索唯一的物品
     public Goods findGoodsById(int id){
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods where id = ?";
+        PreparedStatement ps;
+        ResultSet rs;
         Goods goods = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                goods = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return goods;
     }
 
