@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void run() {
             DbUtil dbUtils = new DbUtil();
-            //dbUtils.insertStudent(username,password);
+
 
         }
     }

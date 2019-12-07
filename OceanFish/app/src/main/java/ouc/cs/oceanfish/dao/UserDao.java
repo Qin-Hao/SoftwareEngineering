@@ -136,4 +136,29 @@ public class UserDao {
        }
        return user;
    }
+
+    /**
+     * findUserById
+     * @param id the id that the user you want to find has
+     * @return user
+     */
+    public User findUserById(int id) {
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from users where id = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        User user = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, String.valueOf(id));
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                user = new User(rs.getInt(1), rs.getString(2),
+                        rs.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 }
