@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class GoodsDao {
 
@@ -91,7 +93,7 @@ public class GoodsDao {
             ps.setString( 7,goods.getDescribe());
             ps.setString( 8,goods.getType());
             ps.setString( 9,goods.getSoldStatus());
-            ps.setInt( 10,goods.getId());
+            ps.setInt( 10,id);
 
             result = ps.executeUpdate();
         } catch (SQLException e) {
@@ -133,8 +135,30 @@ public class GoodsDao {
     }
 
     //通过name搜索一种物品
-    public boolean findGoodsByName(String name){
-        return true;
+    public Vector<Goods> findGoodsByName(String name){
+        Vector<Goods> goods = new Vector<Goods>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods where name = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Goods g = new Goods();
+                g = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+                goods.add(g);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goods;
     }
 
     //通过userId搜索一些物品
@@ -148,7 +172,13 @@ public class GoodsDao {
     }
 
     //通过type搜索一类物品
-    public boolean FindGoodsByType(String typr){
+    public boolean FindGoodsByType(String type){
+        return true;
+    }
+
+    //通过soldStatus搜索一些物品
+    public boolean FindGoodsBySoldStatus(String soldStatus)
+    {
         return true;
     }
 
