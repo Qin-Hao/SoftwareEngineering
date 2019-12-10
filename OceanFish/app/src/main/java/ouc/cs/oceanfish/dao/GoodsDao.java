@@ -162,28 +162,141 @@ public class GoodsDao {
     }
 
     //通过userId搜索一些物品
-    public boolean findGoodsByUserId(int userId){
-        return true;
+    public Vector<Goods> findGoodsByUserId(int userId){
+        Vector<Goods> goods = new Vector<Goods>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods where userId = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Goods g = new Goods();
+                g = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+                goods.add(g);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goods;
+
     }
 
     //通过address搜索一些物品
-    public boolean findGoodsByAddress(String address){
-        return true;
+    public Vector<Goods> findGoodsByAddress(String address){
+
+        Vector<Goods> goods = new Vector<Goods>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods where address = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, address);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Goods g = new Goods();
+                g = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+                goods.add(g);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goods;
     }
 
     //通过type搜索一类物品
-    public boolean FindGoodsByType(String type){
-        return true;
+    public Vector<Goods> FindGoodsByType(String type){
+
+        Vector<Goods> goods = new Vector<Goods>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods where type = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, type);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Goods g = new Goods();
+                g = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+                goods.add(g);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goods;
     }
 
     //通过soldStatus搜索一些物品
-    public boolean FindGoodsBySoldStatus(String soldStatus)
+    public Vector<Goods> FindGoodsBySoldStatus(String soldStatus)
     {
-        return true;
+
+        Vector<Goods> goods = new Vector<Goods>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods where soldStatus = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, soldStatus);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Goods g = new Goods();
+                g = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+                goods.add(g);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goods;
     }
 
     //搜索所有物品
-    public boolean FindAllGoods(){
-        return true;
+    public Vector<Goods> FindAllGoods(){
+        Vector<Goods> goods = new Vector<Goods>();
+        Connection conn = DbUtil.getConnection();
+        String sql = "select * from goods ";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                Goods g = new Goods();
+                g = new Goods(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3),rs.getString(4),
+                        rs.getDouble(5),rs.getString(6),
+                        rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10));
+                goods.add(g);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return goods;
     }
 }
