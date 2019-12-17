@@ -49,4 +49,6 @@ public class AdminService {
     public Goods findGoodsById(int id) {
        return goodsDao.findGoodsById(id);
     }
+
+
 }

@@ -26,6 +26,14 @@ public class UserService {
         return userDao.addUser(user);
     }
 
+    public int delUser(int id) {
+        return userDao.delUser(id);
+    }
+
+    public int updateUser(int id, User user) {
+        return userDao.updateUser(id, user);
+    }
+
     /**
      * findUserByName
      * @param username find the user with this name
@@ -43,4 +51,6 @@ public class UserService {
     public User findUserById(int id) {
         return userDao.findUserById(id);
     }
+
+
 }
