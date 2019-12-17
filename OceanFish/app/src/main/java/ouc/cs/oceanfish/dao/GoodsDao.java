@@ -1,13 +1,12 @@
 package ouc.cs.oceanfish.dao;
+
 import ouc.cs.oceanfish.po.Goods;
 import ouc.cs.oceanfish.util.DbUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class GoodsDao {
@@ -136,7 +135,7 @@ public class GoodsDao {
 
     //通过name搜索一种物品
     public Vector<Goods> findGoodsByName(String name){
-        Vector<Goods> goods = new Vector<Goods>();
+        Vector<Goods> goods = new Vector<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from goods where name = ?";
         PreparedStatement ps;
@@ -147,7 +146,7 @@ public class GoodsDao {
             ps.setString(1, name);
             rs = ps.executeQuery();
             if (rs.next()) {
-                Goods g = new Goods();
+                Goods g;
                 g = new Goods(rs.getInt(1), rs.getInt(2),
                         rs.getString(3),rs.getString(4),
                         rs.getDouble(5),rs.getString(6),
@@ -163,7 +162,7 @@ public class GoodsDao {
 
     //通过userId搜索一些物品
     public Vector<Goods> findGoodsByUserId(int userId){
-        Vector<Goods> goods = new Vector<Goods>();
+        Vector<Goods> goods = new Vector<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from goods where userId = ?";
         PreparedStatement ps;
@@ -174,7 +173,7 @@ public class GoodsDao {
             ps.setInt(1, userId);
             rs = ps.executeQuery();
             if (rs.next()) {
-                Goods g = new Goods();
+                Goods g;
                 g = new Goods(rs.getInt(1), rs.getInt(2),
                         rs.getString(3),rs.getString(4),
                         rs.getDouble(5),rs.getString(6),
@@ -192,7 +191,7 @@ public class GoodsDao {
     //通过address搜索一些物品
     public Vector<Goods> findGoodsByAddress(String address){
 
-        Vector<Goods> goods = new Vector<Goods>();
+        Vector<Goods> goods = new Vector<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from goods where address = ?";
         PreparedStatement ps;
@@ -203,7 +202,7 @@ public class GoodsDao {
             ps.setString(1, address);
             rs = ps.executeQuery();
             if (rs.next()) {
-                Goods g = new Goods();
+                Goods g;
                 g = new Goods(rs.getInt(1), rs.getInt(2),
                         rs.getString(3),rs.getString(4),
                         rs.getDouble(5),rs.getString(6),
@@ -218,9 +217,9 @@ public class GoodsDao {
     }
 
     //通过type搜索一类物品
-    public Vector<Goods> FindGoodsByType(String type){
+    public Vector<Goods> findGoodsByType(String type){
 
-        Vector<Goods> goods = new Vector<Goods>();
+        Vector<Goods> goods = new Vector<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from goods where type = ?";
         PreparedStatement ps;
@@ -231,7 +230,7 @@ public class GoodsDao {
             ps.setString(1, type);
             rs = ps.executeQuery();
             if (rs.next()) {
-                Goods g = new Goods();
+                Goods g;
                 g = new Goods(rs.getInt(1), rs.getInt(2),
                         rs.getString(3),rs.getString(4),
                         rs.getDouble(5),rs.getString(6),
@@ -246,10 +245,10 @@ public class GoodsDao {
     }
 
     //通过soldStatus搜索一些物品
-    public Vector<Goods> FindGoodsBySoldStatus(String soldStatus)
+    public Vector<Goods> findGoodsBySoldStatus(String soldStatus)
     {
 
-        Vector<Goods> goods = new Vector<Goods>();
+        Vector<Goods> goods = new Vector<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from goods where soldStatus = ?";
         PreparedStatement ps;
@@ -260,7 +259,7 @@ public class GoodsDao {
             ps.setString(1, soldStatus);
             rs = ps.executeQuery();
             if (rs.next()) {
-                Goods g = new Goods();
+                Goods g;
                 g = new Goods(rs.getInt(1), rs.getInt(2),
                         rs.getString(3),rs.getString(4),
                         rs.getDouble(5),rs.getString(6),
@@ -275,8 +274,8 @@ public class GoodsDao {
     }
 
     //搜索所有物品
-    public Vector<Goods> FindAllGoods(){
-        Vector<Goods> goods = new Vector<Goods>();
+    public Vector<Goods> findAllGoods(){
+        Vector<Goods> goods = new Vector<>();
         Connection conn = DbUtil.getConnection();
         String sql = "select * from goods ";
         PreparedStatement ps;
@@ -286,7 +285,7 @@ public class GoodsDao {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             if (rs.next()) {
-                Goods g = new Goods();
+                Goods g;
                 g = new Goods(rs.getInt(1), rs.getInt(2),
                         rs.getString(3),rs.getString(4),
                         rs.getDouble(5),rs.getString(6),

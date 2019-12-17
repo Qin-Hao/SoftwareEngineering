@@ -1,5 +1,7 @@
 package ouc.cs.oceanfish.service;
 
+import java.util.Vector;
+
 import ouc.cs.oceanfish.dao.UserDao;
 import ouc.cs.oceanfish.po.User;
 import ouc.cs.oceanfish.po.Goods;
@@ -49,8 +51,45 @@ public class UserService {
     }
 
 
-    public Goods addGoods(Goods goods)
+    public int addGoods(Goods goods)
     {
-        goodsDao.addGoods(goods);
+        return goodsDao.addGoods(goods);
+    }
+
+    public int deleGoods(int id){
+        return goodsDao.deleteGoods(id);
+    }
+
+    public  int updateGoods(int id,Goods goods){
+        goods.setSoldStatus("under review");
+        return goodsDao.updateGoods(id,goods);
+    }
+
+    public Goods findGoodsById(int id){
+        return goodsDao.findGoodsById(id);
+    }
+
+    public Vector<Goods> findGoodsByName(String name){
+        return goodsDao.findGoodsByName(name);
+    }
+
+    public Vector<Goods> findGoodsByUserId(int userId){
+        return goodsDao.findGoodsByUserId(userId);
+    }
+
+    public Vector<Goods> findGoodsByAdresss(String address){
+        return goodsDao.findGoodsByAddress(address);
+    }
+
+    public Vector<Goods> findGoodsByType(String type){
+        return goodsDao.findGoodsByType(type);
+    }
+
+    public Vector<Goods> findGoodsBySoldStatus(String soldStatus){
+        return goodsDao.findGoodsBySoldStatus(soldStatus);
+    }
+
+    public Vector<Goods> findAllGoods(){
+        return goodsDao.findAllGoods();
     }
 }

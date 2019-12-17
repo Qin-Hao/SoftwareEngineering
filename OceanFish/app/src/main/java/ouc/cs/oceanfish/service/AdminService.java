@@ -10,7 +10,7 @@ public class AdminService {
 
     public void pass(boolean pass,Goods goods){
         if(pass){
-            goods.setSoldStatus("已审核");
+            goods.setSoldStatus("passed");
             goodsDao.updateGoods(goods.getId(),goods);
         }else{
             goodsDao.deleteGoods(goods.getId());
