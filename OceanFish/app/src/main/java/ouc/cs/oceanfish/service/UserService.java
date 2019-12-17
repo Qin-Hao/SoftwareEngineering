@@ -2,16 +2,12 @@ package ouc.cs.oceanfish.service;
 
 import ouc.cs.oceanfish.dao.UserDao;
 import ouc.cs.oceanfish.po.User;
-
-/**
- * UserService
- *
- * @author qinhao
- * @date 2019/12/03
- */
+import ouc.cs.oceanfish.po.Goods;
+import ouc.cs.oceanfish.dao.GoodsDao;
 
 public class UserService {
     private UserDao userDao = new UserDao();
+    private GoodsDao goodsDao = new GoodsDao();
 
     /**
      * register
@@ -53,4 +49,8 @@ public class UserService {
     }
 
 
+    public Goods addGoods(Goods goods)
+    {
+        goodsDao.addGoods(goods);
+    }
 }
