@@ -2,9 +2,12 @@ package ouc.cs.oceanfish.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -15,14 +18,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.util.Objects;
+
 import ouc.cs.oceanfish.MainActivity;
 import ouc.cs.oceanfish.R;
-import ouc.cs.oceanfish.util.DbUtil;
+import ouc.cs.oceanfish.dao.UserDao;
+import ouc.cs.oceanfish.po.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
@@ -112,6 +120,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        username = usernameEditText.getText().toString();
+        password = passwordEditText.getText().toString();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,8 +132,36 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+
+                checkLog();
             }
         });
+    }
+
+    private void checkLog() {
+        new Thread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void run() {
+                UserDao userDao = new UserDao();
+                Looper.prepare();
+                User user = new User();
+                user = userDao.findUserByName(username);
+                if (user == null) {
+                    Objects.requireNonNull(user).setName(username);
+                    user.setPassword(password);
+                    userDao.addUser(user);
+                } else {
+                    if (!(user.getPassword().equals(password))) {
+                        Log.d("LoginError", password + " error");
+                        Toast.makeText(getApplicationContext(), "密码错误！", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "登陆成功！", Toast.LENGTH_LONG).show();
+                    }
+                }
+                Looper.loop();
+            }
+        }).start();
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -133,27 +172,5 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * 点击事件,在activity_login.xml中有设置android:onclick="connectSql"点击事件
-     */
-    public void connectSql(View view) {
-        username = usernameEditText.getText().toString();
-        password = passwordEditText.getText().toString();
-        MyThread myThread = new MyThread();
-        new Thread(myThread).start();
-    }
-
-    /**
-     * 1.使用实现 Runnable接 口的方式来定义一个线程
-     */
-    class MyThread implements Runnable{
-        @Override
-        public void run() {
-            DbUtil dbUtils = new DbUtil();
-
-
-        }
     }
 }

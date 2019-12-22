@@ -22,22 +22,17 @@ public class DbUtil {
     private static final String user = "root";
     private static final String password = "19980924qh";
 
-    static {
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * 连接数据库
      */
     public static Connection getConnection() {
         Connection connection = null;
         try {
+            Class.forName(driver);
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;
