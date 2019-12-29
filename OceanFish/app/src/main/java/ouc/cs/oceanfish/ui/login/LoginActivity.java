@@ -2,7 +2,6 @@ package ouc.cs.oceanfish.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.Editable;
@@ -18,13 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-
-import java.util.Objects;
 
 import ouc.cs.oceanfish.MainActivity;
 import ouc.cs.oceanfish.R;
@@ -140,7 +136,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkLog() {
         new Thread(new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void run() {
                 UserDao userDao = new UserDao();
@@ -148,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                 User user = new User();
                 user = userDao.findUserByName(username);
                 if (user == null) {
-                    Objects.requireNonNull(user).setName(username);
+                    user.setName(username);
                     user.setPassword(password);
                     userDao.addUser(user);
                 } else {
